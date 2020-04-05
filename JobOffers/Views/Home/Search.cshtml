@@ -1,0 +1,25 @@
+﻿@model IEnumerable<JobOffers.Models.Jobs>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+
+    <div class="panel panel-default">
+        <h1 class="panel-heading">نتائج البحث</h1>
+     
+        <div class="row">
+            @foreach (var Subitem in Model)
+            {
+                <div class="col-md-3 thumbnail" style="margin-left:20px;margin-bottom:30px;height:300px">
+                    <img src="~/Uploads/@Subitem.JobImage" />
+                    <h3>@Html.DisplayFor(ModelItem => Subitem.JobTitle)</h3>
+                    <h5>@Html.DisplayFor(ModelItem => Subitem.JobContent)</h5>
+
+                    @Html.ActionLink("التفاصيل", "Details", new { JobId = Subitem.Id }, new { @class = "btn btn-primary" })
+                </div>
+            }
+        </div>
+    </div>

@@ -1,0 +1,60 @@
+﻿@model JobOffers.Models.Jobs
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>تفاصيل الوظيفة</h2>
+
+<div>
+    <h4>Jobs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.UserType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.UserType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobContent)
+        </dd>
+
+        <dt>
+            <img src="~/Uploads/@Html.DisplayFor(model => model.JobImage)" class="thumbnail"
+                 style="width:48px;height:48px;" />        </td>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobImage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("التقدم", "Apply", new { id = Model.Id }, new {@class="btn btn-success"}) |
+    @Html.ActionLink("Back to List", "Index", new {@class="btn btn-default"})
+</p>
