@@ -8,61 +8,47 @@
         var db = new ApplicationDbContext();
         var UserID = User.Identity.GetUserId();
         var CurrentUser = db.Users.Where(a => a.Id == UserID).SingleOrDefault();
-    
+
         @Html.AntiForgeryToken()
-    <ul class="nav navbar-nav navbar-right">
 
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="glyphicon glyphicon-user"></span>
-                <!----<strong>مرحبا بك يا  //CurrentUser</strong>---->
-                <span class="glyphicon glyphicon-chevron-down"></span>
-            </a>
+        <li class="btn-group">
+            <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                Profile
+            </button>
 
-            <ul class="dropdown-menu">
-                <li>
-                    <div class="navbar-user">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <p class="text-center">
-                                    <span class="glyphicon glyphicon-user img-size"></span>
-                                </p>
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="text-right">
-                                    Ayman<!----<strong>CurrentUser</strong>-->
-                                </p>
-                                @if (CurrentUser.UserType == "ناشر")
-                                {
-                                    <a href="~/Home/GetJobByPublisher" class="btn btn-success  btn-block"> الوظائف التي قمت بنشرها</a>
-
-                                    <a href="~/Jobs/Create" class="btn btn-success  btn-block"> نشر وظيفة جديدة</a>
-
-                                }
-                                else
-                                {
-                                    <a href="~/Home/GetJobByUser" class="btn btn-success btn-block">  تفدم لها الوظائف التي فمت </a>
-                                }
-
-                                <a href="~/Account/EditProfile" class="btn btn-primary btn-block">تعديل الحساب</a>
-                                <a href="javascript:document.getElementById('logoff').submit()" class="btn btn-danger">تسجيل الخروج</a>
-                            </div>
-                        </div>
+            <div class="dropdown-menu">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <i class="fas fa-user-secret img-fluid" style="font-size: 40px;"></i>
                     </div>
+                    <div class="col-lg-8">
 
-                </li>
-                </ul>
+                        @if (CurrentUser.UserType == "ناشر")
+                        {
+                            <a href="~/Home/GetJobByPublisher" class="btn btn-success  btn-block"> Posted Jobs</a>
+
+                            <a href="~/Jobs/Create" class="btn btn-success  btn-block"> Publish New Job</a>
+
+                        }
+                        else
+                        {
+                            <a href="~/Home/GetJobByUser" class="btn btn-success btn-block"> Applied Jobs </a>
+                        }
+
+                    </div>
+                </div>
+                <a href="~/Account/EditProfile" class="btn btn-primary btn-block">Edit Profile</a>
+                <a href="javascript:document.getElementById('logoff').submit()" class="btn btn-danger btn-block">تسجيل الخروج</a>
+
+            </div>
         </li>
-
-    </ul>    
-    
-            @*<li>
+        @*<li>
                 @Html.ActionLink(" مرحبا بك يا" + User.Identity.GetUserName(), "Index", "Manage");
             </li>
             <li>
                 <a href="javascript:document.getElementById('logoff').submit()">تسجيل الخروج</a>"
             </li>*@
-  
+
     }
 }
 

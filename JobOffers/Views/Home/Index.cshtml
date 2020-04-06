@@ -4,34 +4,100 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron alert alert-info">
-    <h1>اهلا ياسطة</h1>
-    <p class="lead">تنشر او تقدم لوظية.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">تفاصيل &raquo;</a></p>
+
+<!--Image Slider-->
+<div id="slides" class="carousel slide" data-ride="carousel">
+
+    <ul class="carousel-indicators">
+        <li data-target="#slides" data-slide-to="0" class="active"></li>
+        <li data-target="#slides" data-slide-to="1"></li>
+        <li data-target="#slides" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="Uploads/1.jpg">
+            <div class="carousel-caption">
+                <h1 class="display-2">Software Enginner</h1>
+                <button type="button" class="btn btn-outline-light btn-lg">Sign UP</button>
+                <button type="button" class="btn btn-primary btn-lg">Sign In</button>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="Uploads/2.jpg">
+        </div>
+        <div class="carousel-item">
+            <img src="Uploads/3.jpg">
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            <p class="lead">A webSite for Who searches for A job , JOBS AYMAN IS best WEBSITE EVER</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+            <a href="#" class="btn btn-outline-secondary btn-lg">GO</a>
+        </div>
+    </div>
+
 </div>
 
 
 @foreach (var item in Model)
 {
-
-<div class="panel panel-info">
-    <div class="panel-heading"><h1>@Html.DisplayFor(modelItem => item.CategoryName)</h1></div>
-   
-    <div class="row panel-body">
-        <h5>@Html.DisplayFor(modelItem => item.CategoryDescription)</h5>
-
-        @foreach (var Subitem in item.jobs)
-        {
-            <div class="col-md-3 thumbnail" style="margin-left:20px;margin-bottom:30px;min-height:300px">
-                <img src="~/Uploads/@Subitem.JobImage" />
-                <h3>@Html.DisplayFor(ModelItem => Subitem.JobTitle)</h3>
-                <h5>@Html.DisplayFor(ModelItem => Subitem.JobContent)</h5>
-
-                @Html.ActionLink("التفاصيل", "Details", new { JobId = Subitem.Id }, new { @class = "btn btn-primary" })
+    <div class="container-fluid padding">
+        <div class="row welcome text-center">
+            <div class="col-12">
+                <h1 class="display-4">@Html.DisplayFor(modelItem => item.CategoryName)</h1>
+                <br><hr><br>
             </div>
-        }
+        </div>
+        <h3>@Html.DisplayFor(modelItem => item.CategoryDescription)</h3>
     </div>
-</div>
+
+
+    <div class="container padding">
+        <div class="row padding">
+
+            @foreach (var Subitem in item.jobs)
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="Uploads/desk.jpg">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                @Html.DisplayFor(ModelItem => Subitem.JobTitle)
+                            </h4>
+                            <p class="card-text">@Html.DisplayFor(ModelItem => Subitem.JobContent)</p>
+                            @Html.ActionLink("Details", "Details", new { JobId = Subitem.Id }, new { @class = "btn btn-outline-secondary" })
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
 }
 
+<hr class="my-4">         <!--Two Column Section-->
+<div class="container-fluid padding">
 
+    <div class="row padding">
+
+        <div class="col-lg-6">
+
+            <h2>Our Aim is To Help People</h2>
+            <p>
+                Is the aim is to help us,Is the aim is to help us,Is the aim is to help us,Is the aim is to help us,
+                Is the aim is to help us,Is the aim is to help us,Is the aim is to help us
+            </p>
+            <br>
+        </div>
+        <div class="col-lg-6">
+            <img src="images/desk.jpg" class="img-fluid">
+        </div>
+    </div>
+</div>

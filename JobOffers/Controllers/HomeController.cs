@@ -101,11 +101,11 @@ namespace WebApplication3.Controllers
 
                 db.ApplyForJobs.Add(job);
                 db.SaveChanges();
-                ViewBag.Result = "تمت الاضافة بنجاح";
+                ViewBag.Result = "Done";
             }
             else
             {
-                ViewBag.Result = "محطوط اصلا";
+                ViewBag.Result = "You Have applied before";
             }
 
             return View();

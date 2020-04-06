@@ -157,6 +157,11 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Uploads\1.jpg" />
+    <Content Include="Uploads\2.jpg" />
+    <Content Include="Uploads\3.jpg" />
+    <Content Include="Uploads\desk.jpg" />
+    <Content Include="Uploads\logo.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -315,7 +320,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003252114156_InitialCreate.resx">

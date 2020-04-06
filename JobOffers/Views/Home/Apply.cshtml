@@ -1,47 +1,35 @@
 ﻿
-@{
-    ViewBag.Title = "Apply";
-    Layout = "~/Views/Shared/_Layout1.cshtml";
-}
-
-<h2>Apply</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div>
-
-        @{
-            if (ViewBag.Result != null)
-            {
-                <h3>@ViewBag.Result</h3>
-            }
-        }
-
-    </div>
+    @{
+        ViewBag.Title = "Apply";
+        Layout = "~/Views/Shared/_Layout1.cshtml";
+    }
 
 
-    <div class="form-horizontal">
-        <h4>ApplyForJob</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.Label("Message", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextArea("Message", new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessage("Message", "", new { @class = "text-danger" })
+    <div class="d-flex justify-content-center align-items-center login-container">
+       <form action="/Home/Apply" method="post" class="login-form text-center">
+            @Html.AntiForgeryToken()
+
+            <div>
+
+                @{
+                    if (ViewBag.Result != null)
+                    {
+                        <h3>@ViewBag.Result</h3>
+                    }
+                }
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="تاكيد" class="btn btn-default" />
+            <!----mb = margin = 5 , , ,-->
+            <h1 class="mb-5 font-weight-light text-uppercase">Message</h1>
+            <div class="form-group">
+                <textarea id="Message" rows="4" cols="50"></textarea>
             </div>
-        </div>
-    </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+            <h1 class="mb-3 font-weight-light text-uppercase">Resume</h1>
+            <div class="form-group">
+                <input type="file" class="form-control-file border">
+            </div>
+
+            <input type="submit" class="btn mt-4 btn-primary btn-block btn-block " value="Submit" />
+
+        </form>
+    </div>
