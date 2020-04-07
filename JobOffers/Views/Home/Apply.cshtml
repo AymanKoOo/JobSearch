@@ -4,7 +4,7 @@
         Layout = "~/Views/Shared/_Layout1.cshtml";
     }
 
-
+  
     <div class="d-flex justify-content-center align-items-center login-container">
        <form action="/Home/Apply" method="post" class="login-form text-center">
             @Html.AntiForgeryToken()
@@ -21,15 +21,15 @@
             <!----mb = margin = 5 , , ,-->
             <h1 class="mb-5 font-weight-light text-uppercase">Message</h1>
             <div class="form-group">
-                <textarea id="Message" rows="4" cols="50"></textarea>
-            </div>
+                <input type="text" name="Message" />
 
+
+            </div>
+            
             <h1 class="mb-3 font-weight-light text-uppercase">Resume</h1>
-            <div class="form-group">
-                <input type="file" class="form-control-file border">
-            </div>
+           
 
-            <input type="submit" class="btn mt-4 btn-primary btn-block btn-block " value="Submit" />
+            <input type="submit" class="btn mt-4 btn-primary btn-block btn-block" value="Submit" id="submit"/>
 
         </form>
     </div>

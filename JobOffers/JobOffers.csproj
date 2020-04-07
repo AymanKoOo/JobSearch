@@ -308,7 +308,6 @@
     <Content Include="Views\Home\GetJobByUser.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\DetailsOfJon.cshtml" />
-    <Content Include="Views\Home\GetJobByPublisher.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Account\EditProfile.cshtml" />
     <None Include="Web.Debug.config">

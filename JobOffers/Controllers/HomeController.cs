@@ -47,7 +47,7 @@ namespace WebApplication3.Controllers
                        where job.user.Id == UserID
                        select app;
 
-            var grouped = from j in Jobs
+          /*  var grouped = from j in Jobs
                           group j by j.job.JobTitle
                           into gr
                           select new JobModel
@@ -55,8 +55,8 @@ namespace WebApplication3.Controllers
                               JobTitle = gr.Key,
                               Items = gr
                           };
-
-            return View(grouped.ToList());
+         */
+            return View(Jobs);
         }
 
         public ActionResult Details(int JobId)
@@ -75,6 +75,20 @@ namespace WebApplication3.Controllers
         /// <returns></returns>
         /// 
         /// //When Clicked in details apply then it opens aopply view 
+        /// 
+
+        // POST: Jobs/Delete/5
+        
+        public ActionResult DeleteApply(int applyID)
+        {
+          
+            ApplyForJob ajob = db.ApplyForJobs.Find(applyID);
+                db.ApplyForJobs.Remove(ajob);
+                db.SaveChanges();
+            var data = new { status = "ok", result = true };
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
         [Authorize]//must login
         public ActionResult Apply()
         {

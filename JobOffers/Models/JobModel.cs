@@ -9,5 +9,6 @@ namespace JobOffers.Models
     {
         public string JobTitle { get; set; }
         public IEnumerable<ApplyForJob> Items { get; set; }
+    
     }
 }

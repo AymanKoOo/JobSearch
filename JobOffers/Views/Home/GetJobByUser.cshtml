@@ -5,35 +5,95 @@
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-<h2>جميع الوظائف</h2>
+
+<div class="container padding">
+    <div class="row padding">
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Message);
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplyDate)
-        </th>
-           <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="@Url.Content("~/Uploads/desk.jpg")" alt="body" />
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            @Html.DisplayFor(modelItem => item.job.JobTitle)
+                        </h4>
+                        <p class="card-text"> Job Description : Job for who knows css,Job for who knows css,Job for who knows css</p>
+                        <hr>
+                        Message :  @Html.DisplayFor(modelItem => item.Message)
+                        <hr>
+                        Applied Date :  @Html.DisplayFor(modelItem => item.ApplyDate)
+                        <hr>
+                        @Html.ActionLink("Details", "Details", new { JobId = item.JobId }, new { @class = "btn btn-outline-primary" })
+                  
+                        <a href="#"  class="btn btn-danger" onclick="passID(@item.Id)">Cancel Apply</a>
+               
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Message)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplyDate)
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "DetailsOfJon", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
 
-</table>
+
+<div class="modal fade" id="myModal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Cancel Apply</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <h2>Are you sure ? You want to delete this. </h2>
+
+            </div>
+
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-danger" onclick="DeleteEmployee()">Confirm</a>
+            </div>
+
+        </div>
+
+    </div>
+    <input type="hidden" id="hiddinAplyID" />
+
+</div>
+
+
+
+<script>
+
+    var passID = function (applyID) {
+        $("#hiddinAplyID").val(applyID);
+        $("#myModal").modal('show');   
+    }
+
+    var DeleteEmployee = function () {
+
+        var applyID = $("#hiddinAplyID").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: '@Url.Action("DeleteApply", "Home")?applyID=' + applyID,
+            success: function (data) {
+                if (data.status == "ok") {
+                          window.location.reload(true); 
+                }
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+</script>
+
+
